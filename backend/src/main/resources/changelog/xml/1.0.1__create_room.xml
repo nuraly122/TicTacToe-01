@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet context="legacy" author="Vladislav Bedritsky" id="3" >
+        <createTable tableName="rooms">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="amountOfPeople" type="INT"/>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="rooms"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet context="legacy" author="Vladislav Bedritsky" id="4">
+        <insert tableName="rooms">
+            <column name="id">1</column>
+            <column name="name">room1</column>
+            <column name="amountOfPeople">0</column>
+        </insert>
+        <insert tableName="rooms">
+            <column name="id">2</column>
+            <column name="name">room2</column>
+            <column name="amountOfPeople">0</column>
+        </insert>
+        <insert tableName="rooms">
+            <column name="id">3</column>
+            <column name="name">room3</column>
+            <column name="amountOfPeople">0</column>
+        </insert>
+        <rollback>
+            DELETE FROM roles WHERE id = 1;
+            DELETE FROM roles WHERE id = 2;
+            DELETE FROM roles WHERE id = 3;
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

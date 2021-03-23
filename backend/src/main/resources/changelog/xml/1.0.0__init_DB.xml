@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet context="legacy" author="Vladislav Bedritsky" id="1" >
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="username" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="active" type="TINYINT(1)" />
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="users"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet context="legacy" author="Vladislav Bedritsky" id="2">
+        <insert tableName="users">
+            <column name="id">1</column>
+            <column name="username">q</column>
+            <column name="password">q</column>
+            <column name="active">1</column>
+        </insert>
+        <rollback>
+            DELETE FROM users WHERE id = 1;
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,66 @@
+#main {
+  position: absolute;
+  height: 100%;
+  width:100%;
+  background-color: #F5F4EF;
+}
+
+#registration, #signIn {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 25%;
+}
+
+#registration h2,
+ #signIn h2 {
+  text-align: center;
+}
+
+#registration form button,
+ #signIn form button {
+  margin-top: 2px;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+#registration form button:hover,
+ #signIn form button:hover {
+  margin-top: 2px;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: #e6e6e6;
+}
+
+#changeForm1 a,
+ #changeForm2 a {
+  margin-top: 2px;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  color: blue;
+}
+
+#changeForm1 a:hover,
+ #changeForm2 a:hover {
+  margin-top: 2px;
+  position: relative;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  color: blue;
+  text-decoration: underline;
+}
+
+
+
+

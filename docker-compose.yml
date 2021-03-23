@@ -1,0 +1,31 @@
+version: "3.3"
+services:
+
+  angularweb:
+    build:
+      context: ./angular/
+      dockerfile: Dockerfile
+    image: angularweb
+    ports:
+      - 4201:4200
+    container_name: angularweb
+    networks:
+      - net
+    restart: on-failure
+    command: ng serve --host 0.0.0.0 --port 4200 --disable-host-check
+
+  nginx-do:
+    image: vladquinn/nginx-do:latest
+    container_name: nginx-do
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - net
+    restart: on-failure
+    depends_on:
+      - angularweb
+
+networks:
+  net:
+    driver: bridge
